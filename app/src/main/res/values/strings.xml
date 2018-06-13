@@ -6,4 +6,6 @@
     <string name="quantity">quantity</string>
     <string name="supplier">Supplier</string>
     <string name="phone">phone</string>
+    <string name="error_saving_product">Error with saving the product</string>
+    <string name="product_saved">Product saved with row id:</string>
 </resources>

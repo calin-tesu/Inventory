@@ -20,22 +20,19 @@
 
             <EditText
                 android:id="@+id/product_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/edit_text_style"
                 android:hint="@string/name" />
 
             <EditText
                 android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:hint="@string/price"
+                style="@style/edit_text_style"
                 android:inputType="numberDecimal" />
 
             <EditText
                 android:id="@+id/quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:hint="@string/quantity"
+                style="@style/edit_text_style"
                 android:inputType="number" />
 
         </LinearLayout>
@@ -56,15 +53,13 @@
 
             <EditText
                 android:id="@+id/supplier_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/edit_text_style"
                 android:hint="@string/name" />
 
             <EditText
                 android:id="@+id/phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:hint="@string/phone"
+                style="@style/edit_text_style"
                 android:inputType="phone" />
 
         </LinearLayout>

@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.android.inventory.data.MerchandiseDbHelper;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
 
 public class CatalogActivity extends AppCompatActivity {
@@ -20,13 +23,21 @@ public class CatalogActivity extends AppCompatActivity {
      */
     private MerchandiseDbHelper mDbHelper;
 
+    @BindView(R.id.merchandise_text_view)
+    TextView displayView;
+
+    @BindView(R.id.fab)
+    FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
+        // bind the view using butterknife
+        ButterKnife.bind(this);
+
         // Setup FAB to open EditorActivity
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +84,7 @@ public class CatalogActivity extends AppCompatActivity {
                 null,          // Don't filter by row groups
                 null);        // The sort order
 
-        TextView displayView = findViewById(R.id.merchandise_text_view);
+        //TextView displayView = findViewById(R.id.merchandise_text_view);
 
         try {
             // Create a header in the Text View that looks like this:

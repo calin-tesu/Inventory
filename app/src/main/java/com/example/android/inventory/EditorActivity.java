@@ -12,23 +12,38 @@ import android.widget.Toast;
 import com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
 import com.example.android.inventory.data.MerchandiseDbHelper;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class EditorActivity extends AppCompatActivity {
 
-    private EditText mProductName, mPrice, mQuantity, mSupplier, mPhone;
+    // Find all relevant views that we will need to read user input from
+    @BindView(R.id.product_name)
+    EditText mProductName;
+
+    @BindView(R.id.price)
+    EditText mPrice;
+
+    @BindView(R.id.quantity)
+    EditText mQuantity;
+
+    @BindView(R.id.supplier_name)
+    EditText mSupplier;
+
+    @BindView(R.id.phone)
+    EditText mPhone;
+
+    @BindView(R.id.fab)
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        // Find all relevant views that we will need to read user input from
-        mProductName = findViewById(R.id.product_name);
-        mPrice = findViewById(R.id.price);
-        mQuantity = findViewById(R.id.quantity);
-        mSupplier = findViewById(R.id.supplier_name);
-        mPhone = findViewById(R.id.phone);
+        // bind the view using butterknife
+        ButterKnife.bind(this);
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,10 +84,10 @@ public class EditorActivity extends AppCompatActivity {
         // Show a toast message depending on whether or not the insertion was successful
         if (newRowId == -1) {
             // If the row ID is -1, then there was an error with insertion.
-            Toast.makeText(this, "Error with saving the product", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, com.example.android.inventory.R.string.error_saving_product, Toast.LENGTH_SHORT).show();
         } else {
             // Otherwise, the insertion was successful and we can display a toast with the row ID.
-            Toast.makeText(this, "Product saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(com.example.android.inventory.R.string.product_saved) + newRowId, Toast.LENGTH_SHORT).show();
         }
     }
 }

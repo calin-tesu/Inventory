@@ -14,9 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import static com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
 
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -25,37 +22,34 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     MerchandiseCursorAdapter mCursorAdapter;
 
-    @BindView(R.id.list)
-    ListView merchandiseListView;
-
-    @BindView(R.id.fab)
-    FloatingActionButton floatingActionButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
-        // bind the view using butterknife
-        ButterKnife.bind(this);
-
         // Setup FAB to open EditorActivity
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
                 startActivity(intent);
             }
         });
 
-        //Setup the adapter to create a list item for each row of pet data in the Cursor
+        // Find the ListView which will be populated with the merchandises data
+        ListView merchandiseListView = findViewById(R.id.list);
+
+        //TODO set empty view method
+
+        //Setup the adapter to create a list item for each row of merchandise data in the Cursor
         mCursorAdapter = new MerchandiseCursorAdapter(this, null);
         merchandiseListView.setAdapter(mCursorAdapter);
 
         // Setup item click listener
         merchandiseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
                 Uri currentMerchandiseUri = ContentUris.withAppendedId(MerchandiseEntry.CONTENT_URI, id);
 

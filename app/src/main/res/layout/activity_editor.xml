@@ -1,74 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_general"
     tools:context=".EditorActivity">
 
     <LinearLayout
-        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/margin_general">
+        android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            style="@style/editor_category"
-            android:text="@string/product" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/name"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryDark"
+            tools:text="Name" />
 
-        <LinearLayout style="@style/editor_hint">
-
-            <EditText
-                android:id="@+id/product_name"
-                style="@style/edit_text_style"
-                android:hint="@string/name" />
-
-            <EditText
-                android:id="@+id/price"
-                android:hint="@string/price"
-                style="@style/edit_text_style"
-                android:inputType="numberDecimal" />
-
-            <EditText
-                android:id="@+id/quantity"
-                android:hint="@string/quantity"
-                style="@style/edit_text_style"
-                android:inputType="number" />
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/product_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/required_field"
+            tools:text="Pita cu schnitzel" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/header"
-        android:padding="@dimen/margin_general">
+        android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            style="@style/editor_category"
-            android:text="@string/supplier" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/price"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryDark"
+            tools:text="Price" />
 
-        <LinearLayout style="@style/editor_hint">
-
-            <EditText
-                android:id="@+id/supplier_name"
-                style="@style/edit_text_style"
-                android:hint="@string/name" />
-
-            <EditText
-                android:id="@+id/phone"
-                android:hint="@string/phone"
-                style="@style/edit_text_style"
-                android:inputType="phone" />
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/required_field"
+            android:inputType="numberDecimal"
+            tools:text="55.24" />
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        style="@style/floating_button"
-        android:src="@drawable/ic_action_add" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/name_header_padding">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/quantity"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryDark"
+            tools:text="Quantity" />
+
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/required_field"
+            android:inputType="number"
+            tools:text="323" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/name_header_padding">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/supplier"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryDark"
+            tools:text="Supplier" />
+
+        <EditText
+            android:id="@+id/supplier_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/required_field"
+            tools:text="Porcul gras" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/name_header_padding">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/phone"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryDark"
+            tools:text="Phone" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/required_field"
+            android:inputType="phone"
+            tools:text="0774536425" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_call" />
+
+    </LinearLayout>
+
+</LinearLayout>

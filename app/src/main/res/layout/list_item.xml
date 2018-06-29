@@ -9,13 +9,15 @@
         android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:paddingBottom="@dimen/name_header_padding"
+        android:textAppearance="?android:textAppearanceLarge"
         tools:text="Some Thing" />
 
     <TextView
         android:id="@+id/price_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/product_name"
         android:text="@string/price" />
 
@@ -23,6 +25,7 @@
         android:id="@+id/price_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/product_name"
         android:layout_marginLeft="@dimen/margin_general"
         android:layout_toRightOf="@id/quantity_header"
@@ -32,6 +35,7 @@
         android:id="@+id/quantity_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/price_header"
         android:text="@string/quantity" />
 
@@ -39,6 +43,7 @@
         android:id="@+id/quantity_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/price_header"
         android:layout_marginLeft="@dimen/margin_general"
         android:layout_toRightOf="@id/quantity_header"
@@ -50,6 +55,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:focusable="false"
         android:text="Sell" />
+
+    <TextView
+        android:id="@+id/out_of_stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/product_name"
+        android:text="@string/out_of_stock"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>

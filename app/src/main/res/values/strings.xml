@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Inventory</string>
-    <string name="product">Product</string>
     <string name="name">Name</string>
     <string name="price">Price</string>
     <string name="quantity">Quantity</string>
@@ -23,4 +22,7 @@
     <string name="price_greater_then_zero">Price cannot be 0 !</string>
     <string name="out_of_stock">Out of stock</string>
     <string name="required_field">*required</string>
+    <string name="empty_db_title">The database is empty!</string>
+    <string name="empty_db_info">Click on + button to add some products</string>
+    <string name="sell">Sell</string>
 </resources>

@@ -16,7 +16,7 @@ public class MerchandiseProvider extends ContentProvider {
     /**
      * Tag for the log messages
      */
-    public static final String LOG_TAG = MerchandiseProvider.class.getSimpleName();
+    private static final String LOG_TAG = MerchandiseProvider.class.getSimpleName();
 
     /**
      * URI matcher code for the content URI for the merchandise table

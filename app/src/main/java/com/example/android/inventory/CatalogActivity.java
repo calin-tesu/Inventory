@@ -20,7 +20,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     private static final int MERCHANDISE_LOADER = 0;
 
-    MerchandiseCursorAdapter mCursorAdapter;
+    private MerchandiseCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // Find the ListView which will be populated with the merchandises data
         ListView merchandiseListView = findViewById(R.id.list);
 
-        //TODO set empty view method
+        // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
+        View emptyView = findViewById(R.id.empty_view);
+        merchandiseListView.setEmptyView(emptyView);
 
         //Setup the adapter to create a list item for each row of merchandise data in the Cursor
         mCursorAdapter = new MerchandiseCursorAdapter(this, null);

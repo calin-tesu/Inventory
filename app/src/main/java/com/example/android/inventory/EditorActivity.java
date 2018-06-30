@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
@@ -57,7 +58,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * OnTouchListener that listens for any user touches on a View, implying that they are modifying
      * the view, and we change the mMerchandiseHasChanged boolean to true.
      */
-    private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+    private final View.OnTouchListener mTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             mMerchandiseHasChanged = true;
@@ -99,6 +100,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mSupplier = findViewById(R.id.supplier_name);
         mPhone = findViewById(R.id.phone);
 
+        ImageButton btnMakePhoneCall = findViewById(R.id.btn_make_phone_call);
+        ImageButton btnAddQuantity = findViewById(R.id.btn_plus_quantity);
+        ImageButton btnRemoveQuantity = findViewById(R.id.btn_minus_quantity);
+
         // Setup OnTouchListeners on all the input fields, so we can determine if the user
         // has touched or modified them. This will let us know if there are unsaved changes
         // or not, if the user tries to leave the editor without saving.
@@ -107,6 +112,52 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mQuantity.setOnTouchListener(mTouchListener);
         mSupplier.setOnTouchListener(mTouchListener);
         mPhone.setOnTouchListener(mTouchListener);
+        btnAddQuantity.setOnTouchListener(mTouchListener);
+        btnRemoveQuantity.setOnTouchListener(mTouchListener);
+
+        // Setup onClickListeners on the buttons
+        btnMakePhoneCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phoneNumber = mPhone.getText().toString().trim();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + phoneNumber));
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
+
+        btnAddQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String quantity = mQuantity.getText().toString();
+                if (TextUtils.isEmpty(quantity)) {
+                    mQuantity.setText("1");
+                } else {
+                    int quantity_value = Integer.parseInt(mQuantity.getText().toString().trim());
+                    quantity_value = quantity_value + 1;
+                    mQuantity.setText(String.valueOf(quantity_value));
+                }
+            }
+        });
+
+        btnRemoveQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String quantity = mQuantity.getText().toString().trim();
+                int quantity_value = Integer.parseInt(quantity);
+                if (TextUtils.isEmpty(quantity)) {
+                    mQuantity.setText("0");
+                } else if (quantity_value > 0) {
+                    quantity_value = quantity_value - 1;
+                    mQuantity.setText(String.valueOf(quantity_value));
+                } else {
+                    Toast.makeText(EditorActivity.this, getResources().getText(R.string.out_of_stock),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override

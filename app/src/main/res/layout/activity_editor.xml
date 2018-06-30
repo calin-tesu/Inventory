@@ -13,12 +13,8 @@
         android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/header_style"
             android:text="@string/name"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryDark"
             tools:text="Name" />
 
         <EditText
@@ -27,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:hint="@string/required_field"
-            tools:text="Pita cu schnitzel" />
+            tools:text="Rainbow" />
 
     </LinearLayout>
 
@@ -37,12 +33,8 @@
         android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/header_style"
             android:text="@string/price"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryDark"
             tools:text="Price" />
 
         <EditText
@@ -62,22 +54,33 @@
         android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/header_style"
             android:text="@string/quantity"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryDark"
             tools:text="Quantity" />
+
+        <ImageButton
+            android:id="@+id/btn_minus_quantity"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:src="@drawable/ic_remove" />
 
         <EditText
             android:id="@+id/quantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2"
+            android:gravity="center"
             android:hint="@string/required_field"
             android:inputType="number"
             tools:text="323" />
+
+        <ImageButton
+            android:id="@+id/btn_plus_quantity"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:src="@drawable/ic_action_add" />
 
     </LinearLayout>
 
@@ -87,12 +90,8 @@
         android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/header_style"
             android:text="@string/supplier"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryDark"
             tools:text="Supplier" />
 
         <EditText
@@ -101,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:hint="@string/required_field"
-            tools:text="Porcul gras" />
+            tools:text="Google Cloud" />
 
     </LinearLayout>
 
@@ -111,12 +110,8 @@
         android:paddingVertical="@dimen/name_header_padding">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/header_style"
             android:text="@string/phone"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryDark"
             tools:text="Phone" />
 
         <EditText
@@ -129,6 +124,7 @@
             tools:text="0774536425" />
 
         <ImageButton
+            android:id="@+id/btn_make_phone_call"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

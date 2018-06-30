@@ -9,7 +9,7 @@ import com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
 /**
  * Database helper for Inventory app. Manages database creation and version management.
  */
-public class MerchandiseDbHelper extends SQLiteOpenHelper {
+class MerchandiseDbHelper extends SQLiteOpenHelper {
 
     /**
      * Name of the database file

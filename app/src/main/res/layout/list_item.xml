@@ -17,36 +17,36 @@
         android:id="@+id/price_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/product_name"
-        android:text="@string/price" />
+        android:text="@string/price"
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <TextView
         android:id="@+id/price_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/product_name"
         android:layout_marginLeft="@dimen/margin_general"
         android:layout_toRightOf="@id/quantity_header"
+        android:textAppearance="?android:textAppearanceMedium"
         tools:text="24.99" />
 
     <TextView
         android:id="@+id/quantity_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/price_header"
-        android:text="@string/quantity" />
+        android:text="@string/quantity"
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <TextView
         android:id="@+id/quantity_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
         android:layout_below="@id/price_header"
         android:layout_marginLeft="@dimen/margin_general"
         android:layout_toRightOf="@id/quantity_header"
+        android:textAppearance="?android:textAppearanceMedium"
         tools:text="55" />
 
     <Button
@@ -57,7 +57,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
         android:focusable="false"
-        android:text="Sell" />
+        android:text="@string/sell" />
 
     <TextView
         android:id="@+id/out_of_stock"

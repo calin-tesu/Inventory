@@ -14,13 +14,13 @@ import android.widget.TextView;
 
 import static com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
 
-public class MerchandiseCursorAdapter extends CursorAdapter {
+class MerchandiseCursorAdapter extends CursorAdapter {
 
     /**
      * Constructs a new {@link MerchandiseCursorAdapter}.
      *
      * @param context The context
-     * @param cursor       The cursor from which to get the data.
+     * @param cursor  The cursor from which to get the data.
      */
     public MerchandiseCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0 /* flags */);

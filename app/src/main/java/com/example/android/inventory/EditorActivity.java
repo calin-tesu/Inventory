@@ -23,6 +23,9 @@ import android.widget.Toast;
 
 import com.example.android.inventory.data.MerchandiseContract.MerchandiseEntry;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Allows user to create a new pet or edit an existing one.
  */
@@ -39,15 +42,29 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private Uri mCurrentMerchandiseUri;
 
     // Find all relevant views that we will need to read user input from
-    private EditText mProductName;
+    @BindView(R.id.product_name)
+    EditText mProductName;
 
-    private EditText mPrice;
+    @BindView(R.id.price)
+    EditText mPrice;
 
-    private EditText mQuantity;
+    @BindView(R.id.quantity)
+    EditText mQuantity;
 
-    private EditText mSupplier;
+    @BindView(R.id.supplier_name)
+    EditText mSupplier;
 
-    private EditText mPhone;
+    @BindView(R.id.phone)
+    EditText mPhone;
+
+    @BindView(R.id.btn_make_phone_call)
+    ImageButton btnMakePhoneCall;
+
+    @BindView(R.id.btn_add_quantity)
+    ImageButton btnAddQuantity;
+
+    @BindView(R.id.btn_remove_quantity)
+    ImageButton btnRemoveQuantity;
 
     /**
      * Boolean flag that keeps track of whether the pet has been edited (true) or not (false)
@@ -71,6 +88,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+        // bind the view using butterknife
+        ButterKnife.bind(this);
+
         // Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new merchandise or editing an existing one.
         Intent intent = getIntent();
@@ -93,16 +113,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // and display the current values in the editor
             getLoaderManager().initLoader(EXISTING_MERCHANDISE_LOADER, null, this);
         }
-
-        mProductName = findViewById(R.id.product_name);
-        mPrice = findViewById(R.id.price);
-        mQuantity = findViewById(R.id.quantity);
-        mSupplier = findViewById(R.id.supplier_name);
-        mPhone = findViewById(R.id.phone);
-
-        ImageButton btnMakePhoneCall = findViewById(R.id.btn_make_phone_call);
-        ImageButton btnAddQuantity = findViewById(R.id.btn_plus_quantity);
-        ImageButton btnRemoveQuantity = findViewById(R.id.btn_minus_quantity);
 
         // Setup OnTouchListeners on all the input fields, so we can determine if the user
         // has touched or modified them. This will let us know if there are unsaved changes
@@ -131,11 +141,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         btnAddQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String quantity = mQuantity.getText().toString();
+                String quantity = mQuantity.getText().toString().trim();
                 if (TextUtils.isEmpty(quantity)) {
                     mQuantity.setText("1");
                 } else {
-                    int quantity_value = Integer.parseInt(mQuantity.getText().toString().trim());
+                    int quantity_value = Integer.parseInt(quantity);
                     quantity_value = quantity_value + 1;
                     mQuantity.setText(String.valueOf(quantity_value));
                 }
@@ -146,10 +156,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             @Override
             public void onClick(View v) {
                 String quantity = mQuantity.getText().toString().trim();
-                int quantity_value = Integer.parseInt(quantity);
                 if (TextUtils.isEmpty(quantity)) {
                     mQuantity.setText("0");
-                } else if (quantity_value > 0) {
+                } else if (Integer.parseInt(quantity) > 0) {
+                    int quantity_value = Integer.parseInt(quantity);
                     quantity_value = quantity_value - 1;
                     mQuantity.setText(String.valueOf(quantity_value));
                 } else {

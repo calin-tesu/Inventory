@@ -59,7 +59,7 @@
             tools:text="Quantity" />
 
         <ImageButton
-            android:id="@+id/btn_minus_quantity"
+            android:id="@+id/btn_remove_quantity"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".5"
@@ -76,7 +76,7 @@
             tools:text="323" />
 
         <ImageButton
-            android:id="@+id/btn_plus_quantity"
+            android:id="@+id/btn_add_quantity"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".5"
